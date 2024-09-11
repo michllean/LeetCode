@@ -1,0 +1,24 @@
+class Solution:
+    def minBitFlips(self, start: int, goal: int) -> int:
+        sBin = bin(start)[2:]
+        gBin = bin(goal)[2:]
+
+        if (len(sBin) > len(gBin)):
+            while (len(sBin) > len(gBin)):
+                gBin = "0" + gBin
+        elif (len(sBin) < len(gBin)):
+            while (len(sBin) < len(gBin)):
+                sBin = "0" + sBin
+
+        counter = 0
+        gCounter = 0
+
+        for i in range(len(sBin)):
+            if (sBin[i] != gBin[gCounter] and i == gCounter):
+                sBin = sBin[:i] + gBin[gCounter] + sBin[i + 1:]
+                counter += 1
+            gCounter += 1
+
+        return counter
+
+        return bin(start ^ goal).count("1")
