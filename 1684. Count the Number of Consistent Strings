@@ -1,0 +1,13 @@
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        setAll = set(allowed)
+        counter = len(words)
+        print (counter)
+
+        for word in words:
+            for letter in word:
+                if letter not in setAll:
+                    counter -= 1
+                    break
+
+        return counter
