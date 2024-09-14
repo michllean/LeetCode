@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maximum = max(nums)
+        counter = 0
+        consecutive = 0
+
+        for i in nums:
+            if i == maximum:
+                counter += 1
+                consecutive = max(consecutive, counter)  
+            else:
+                counter = 0
+
+        return consecutive
