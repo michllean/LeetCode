@@ -1,0 +1,26 @@
+class Solution(object):
+    def findMinDifference(self, timePoints):
+        """
+        :type timePoints: List[str]
+        :rtype: int
+        """
+        shortest = 100
+        timeArr = [0] * len(timePoints)
+        counter = 0
+
+        for i in timePoints:
+            hour = int(i[:2]) * 60
+            minute = int(i[-2:])
+            time = hour + minute
+            timeArr[counter] = time
+            counter += 1
+
+        timeArr.sort()
+        
+        minDiff = float('inf')
+        for j in range(1, len(timeArr)):
+            minDiff = min(minDiff, timeArr[j] - timeArr[j - 1])
+            
+        minDiff = min(minDiff, (1440 - timeArr[len(timeArr) - 1]) + timeArr[0])
+
+        return minDiff
