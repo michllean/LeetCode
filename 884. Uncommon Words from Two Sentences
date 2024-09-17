@@ -1,0 +1,17 @@
+class Solution(object):
+    def uncommonFromSentences(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: List[str]
+        """
+        
+        add = s1.split() + s2.split()
+        result = []
+
+        for i in add:
+            if add.count(i) == 1:
+                result.append(i)
+
+        return result
+        
