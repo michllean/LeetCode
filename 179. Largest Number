@@ -1,0 +1,20 @@
+class Solution(object):
+    def largestNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: str
+        """
+        # Convert numbers to strings
+        num_strings = [str(num) for num in nums]
+        
+        # Sort strings based on the custom comparison
+        num_strings.sort(key=lambda x: x * 10, reverse=True)
+        
+        # Join sorted strings to form the largest number
+        largest_num = ''.join(num_strings)
+        
+        # Handle edge case where the result is "000...0"
+        if largest_num[0] == '0':
+            return '0'
+        
+        return largest_num
