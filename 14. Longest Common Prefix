@@ -1,0 +1,20 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+
+        strs = sorted(strs)
+
+        prefix = strs[0]
+
+        counter = 1
+        while counter < len(strs):
+            if prefix != strs[counter][:len(prefix)]:
+                counter = 0
+                prefix = prefix[:-1]
+            counter += 1
+
+        return prefix
+        
